@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
       debugPrint("Error saving result: $e");
     }
 
-    if (!mounted) return; // Ensure context is still active
+    if (!mounted) return;
 
     showDialog(
       context: context,
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(isJackpot ? "Jackpot!" : "Coba Lagi!"),
         content: Text(isJackpot
             ? "Selamat! Anda memenangkan jackpot!"
-            : "Better luck next time."),
+            : "Semoga beruntung dilain waktu."),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -80,13 +80,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Slot Machine'),
+        title: const Text('Slot Machine'),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () async {
               await FirebaseAuth.instance.signOut();
-              await GoogleSignIn().signOut(); // Tambahkan logout Google
+              await GoogleSignIn().signOut();
               Navigator.pushReplacementNamed(context, '/');
             },
           ),
@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   vertical: 5,
                   horizontal: 30,
                 ),
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 16),
             Expanded(
                 child: slotProvider.slots.isEmpty
-                    ? const Center(child: Text('No history yet'))
+                    ? const Center(child: Text('Tidak ada riwayat permainan'))
                     : ListView.builder(
                   itemCount: slotProvider.slots.length,
                   itemBuilder: (context, index) {
@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           textAlign: TextAlign.end,
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () async {
                           await slotProvider.deleteSlot(slot.id);
                         },

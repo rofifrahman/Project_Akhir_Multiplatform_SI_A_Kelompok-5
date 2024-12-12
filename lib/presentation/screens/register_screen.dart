@@ -28,16 +28,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       final email = _emailController.text.trim();
       final password = _passwordController.text.trim();
 
-      // Panggil use case untuk registrasi
       await widget.registerUseCase(email, password);
 
-      // Tampilkan pesan berhasil dan navigasi ke halaman login
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Registrasi berhasil! Silakan login.')),
+        SnackBar(content: Text('Registrasi berhasil!')),
       );
       Navigator.pushReplacementNamed(context, '/');
     } catch (e) {
-      // Tampilkan pesan error
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: ${e.toString()}')),
       );
@@ -67,12 +64,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   'assets/register_illustration.jpg',
                   height: 150,
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   'Buat akun anda',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   'Bergabung bersama kami.',
                   style: TextStyle(
@@ -80,12 +77,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     color: Colors.grey[600],
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 TextFormField(
                   controller: _emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: const Icon(Icons.email),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -101,12 +98,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -122,13 +119,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     return null;
                   },
                 ),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 _isLoading
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 15,
                       horizontal: 150,
                     ),
@@ -137,7 +134,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   onPressed: _register,
-                  child: Text(
+                  child: const Text(
                     'Registrasi',
                     style: TextStyle(
                         fontSize: 16,
@@ -145,12 +142,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 TextButton(
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, '/');
                   },
-                  child: Text(
+                  child: const Text(
                     'Sudah memiliki akun? Login disini',
                     style: TextStyle(color: Colors.blue),
                   ),

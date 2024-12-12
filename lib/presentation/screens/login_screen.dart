@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
       BuildContext context, String email, String password) async {
     if (email.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Email dan password tidak boleh kosong.')),
+        const SnackBar(content: Text('Email dan password tidak boleh kosong.')),
       );
       return;
     }
@@ -81,17 +81,17 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
         centerTitle: true,
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator())
               : SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -100,15 +100,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   'assets/login_illustration.png',
                   height: 150,
                 ),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 20),
+                const Text(
                   'Selamat Datang!',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   'Login untuk melanjutkan',
                   style: TextStyle(
@@ -116,35 +116,35 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: Colors.grey[600],
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: const Icon(Icons.email),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextField(
                   controller: passwordController,
                   decoration: InputDecoration(
                     labelText: 'Password',
-                    prefixIcon: Icon(Icons.lock),
+                    prefixIcon: const Icon(Icons.lock),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   obscureText: true,
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 15,
                       horizontal: 165,
                     ),
@@ -157,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     emailController.text.trim(),
                     passwordController.text.trim(),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Login',
                     style: TextStyle(
                         fontSize: 16,
@@ -165,18 +165,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       vertical: 15,
                       horizontal: 100,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.grey),
+                      side: const BorderSide(color: Colors.grey),
                     ),
                   ),
                   icon: Image.asset(
@@ -184,14 +184,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 24,
                   ),
                   onPressed: () => _signInWithGoogle(context),
-                  label: Text('Login dengan Google'),
+                  label: const Text('Login dengan Google'),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/register');
                   },
-                  child: Text(
+                  child: const Text(
                     'Belum punya akun? Registrasi disini',
                     style: TextStyle(color: Colors.blue),
                   ),
