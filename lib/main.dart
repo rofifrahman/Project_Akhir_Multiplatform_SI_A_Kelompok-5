@@ -26,7 +26,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => SlotProvider(
+          create: (context) => SlotProvider(
             addSlotUseCase: AddSlot(slotRepository),
             getSlotsUseCase: GetSlots(slotRepository),
             deleteSlotUseCase: DeleteSlot(slotRepository),
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
           centerTitle: true,
           elevation: 0,

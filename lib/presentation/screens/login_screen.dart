@@ -11,6 +11,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isLoading = false;
+  bool isObscure = true;
 
   @override
   void dispose() {
@@ -120,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                    labelText: 'Email',
+                    hintText: 'Email',
                     prefixIcon: const Icon(Icons.email),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -132,13 +133,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: passwordController,
                   decoration: InputDecoration(
-                    labelText: 'Password',
+                    hintText: 'Password',
                     prefixIcon: const Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                        onPressed: () {setState(() {isObscure = !isObscure;});},
+                        icon: Icon(isObscure
+                            ? Icons.visibility_off
+                            : Icons.visibility
+                        )
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  obscureText: true,
+                  obscureText: isObscure,
                 ),
                 const SizedBox(height: 30),
                 ElevatedButton(

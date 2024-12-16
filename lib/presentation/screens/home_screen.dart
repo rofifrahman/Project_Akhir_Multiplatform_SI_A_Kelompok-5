@@ -60,7 +60,8 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(isJackpot ? "Jackpot!" : "Coba Lagi!"),
         content: Text(isJackpot
             ? "Selamat! Anda memenangkan jackpot!"
-            : "Semoga beruntung dilain waktu."),
+            : "Semoga beruntung dilain waktu."
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -91,6 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
         ],
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -136,47 +138,47 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 16),
             Expanded(
-                child: slotProvider.slots.isEmpty
-                    ? const Center(child: Text('Tidak ada riwayat permainan'))
-                    : ListView.builder(
-                  itemCount: slotProvider.slots.length,
-                  itemBuilder: (context, index) {
-                    final slot = slotProvider.slots[index];
-                    return ListTile(
-                      leading: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: slot.slots
-                            .map((slot) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          child: Image.asset(
-                            imagePaths[slot],
-                            width: 32,
-                            height: 32,
-                            errorBuilder: (context, error, stackTrace) =>
-                            const Icon(Icons.error, size: 32),
-                          ),
-                        ))
-                            .toList(),
+              child: slotProvider.slots.isEmpty
+                  ? const Center(child: Text('Tidak ada riwayat permainan'))
+                  : ListView.builder(
+                itemCount: slotProvider.slots.length,
+                itemBuilder: (context, index) {
+                  final slot = slotProvider.slots[index];
+                  return ListTile(
+                    leading: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: slot.slots
+                          .map((slot) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: Image.asset(
+                          imagePaths[slot],
+                          width: 32,
+                          height: 32,
+                          errorBuilder: (context, error, stackTrace) =>
+                          const Icon(Icons.error, size: 32),
+                        ),
+                      ))
+                          .toList(),
+                    ),
+                    title: Text(
+                      slot.isWin ? 'Win' : 'Lose',
+                      style: TextStyle(
+                        color: slot.isWin
+                            ? Colors.green
+                            : Colors.red,
+                        fontWeight: FontWeight.bold,
                       ),
-                      title: Text(
-                          slot.isWin ? 'Win' : 'Lose',
-                          style: TextStyle(
-                            color: slot.isWin
-                                ? Colors.green
-                                : Colors.red,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.end,
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.red),
-                        onPressed: () async {
-                          await slotProvider.deleteSlot(slot.id);
-                        },
-                      ),
-                    );
-                  },
-                ),
+                      textAlign: TextAlign.end,
+                    ),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () async {
+                        await slotProvider.deleteSlot(slot.id);
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
