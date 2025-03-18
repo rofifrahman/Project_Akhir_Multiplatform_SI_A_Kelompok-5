@@ -2,9 +2,9 @@
 
 Project Akhir Multiplatform SI A Kelompok 5
 Anggota:
-    - Muh. Rofif Rahman Fuadi - 225150407111085
-    - Aldo Revanza Liesuanto - 225150407111077
-    - Haekal Rafif Bramasta - 225150400111041
+* Muh. Rofif Rahman Fuadi - 225150407111085
+* Aldo Revanza Liesuanto - 225150407111077
+* Haekal Rafif Bramasta - 225150400111041
 
 ## Getting Started
 
